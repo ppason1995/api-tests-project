@@ -15,3 +15,7 @@ class UsersClient:
     def get_user(self, user_id: int):
         """Get single user by id."""
         return self.session.get(f"/users/{user_id}")
+    
+    def create_user(self, payload: dict):
+        """Create new user."""
+        return self.session.post("/users", json=payload)
