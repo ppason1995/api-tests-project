@@ -9,7 +9,6 @@ The project tests CRUD operations for `/users` endpoint using public JSONPlaceho
 - requests
 
 ## Project structure
-
 src/
 api/
 base_session.py
