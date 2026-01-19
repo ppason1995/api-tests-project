@@ -19,3 +19,7 @@ class UsersClient:
     def create_user(self, payload: dict):
         """Create new user."""
         return self.session.post("/users", json=payload)
+    
+    def update_user(self, user_id: int, payload: dict):
+        """Update existing user."""
+        return self.session.patch(f"/users/{user_id}", json=payload)
