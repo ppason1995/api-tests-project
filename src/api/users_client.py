@@ -23,3 +23,7 @@ class UsersClient:
     def update_user(self, user_id: int, payload: dict):
         """Update existing user."""
         return self.session.patch(f"/users/{user_id}", json=payload)
+    
+    def delete_user(self, user_id: int):
+        """Delete user by id."""
+        return self.session.delete(f"/users/{user_id}")
