@@ -9,6 +9,7 @@ The project tests CRUD operations for `/users` endpoint using public JSONPlaceho
 - requests
 
 ## Project structure
+
 src/
 api/
 base_session.py
@@ -25,7 +26,6 @@ test_get_users_with_params.py
 helpers/
 schema_validators.py
 conftest.py
-
 
 ## How to run tests
 
