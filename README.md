@@ -26,7 +26,6 @@ helpers/
 schema_validators.py
 conftest.py
 
-
 ## How to run tests
 
 ### 1. Clone repository
