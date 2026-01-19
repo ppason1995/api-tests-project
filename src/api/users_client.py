@@ -27,3 +27,7 @@ class UsersClient:
     def delete_user(self, user_id: int):
         """Delete user by id."""
         return self.session.delete(f"/users/{user_id}")
+    
+    def get_users_with_params(self, params: dict):
+        """Get users with query parameters."""
+        return self.session.get("/users", params=params)
