@@ -12,7 +12,12 @@ class ApiSession:
         }
     
     def get(self, url: str):
-        return requests.get(
-            url, headers=self._headers()
+        response = requests.get(
+            url,
+            headers=self._headers()
             )
-    
+        
+        if response.status_code == 401:
+            raise RuntimeError("Unauthorized")
+        
+        return response
