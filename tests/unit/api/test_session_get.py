@@ -8,12 +8,15 @@ def test_session_get_sends_headers(monkeypatch):
         }
 
         class FakeResponse:
+            status_code = 200
+            text = ""
+
             def json(self):
                 return {"ok": True}
             
         return FakeResponse()
     
-    monkeypatch.setattr("requests.get", fake_get)
+    monkeypatch.setattr("src.api.session.requests.get", fake_get)
 
     session = ApiSession(token="TEST_TOKEN")
     response = session.get("http://example.com")

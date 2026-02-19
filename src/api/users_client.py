@@ -10,7 +10,8 @@ class UsersClient:
 
     def get_users(self):
         """Get list of users."""
-        return self.session.get("/users")
+        response =  self.session.get("/users")
+        return response.json()
     
     def get_user(self, user_id: int):
         """Get single user by id."""

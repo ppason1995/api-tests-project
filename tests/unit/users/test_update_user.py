@@ -1,4 +1,4 @@
-from tests.helpers.schema_validators import validate_user_schema
+from tests.unit.helpers.schema_validators import validate_user_schema
 
 def test_update_user_success(users_client):
     user_id = 1

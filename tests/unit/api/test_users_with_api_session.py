@@ -10,12 +10,15 @@ def test_get_users_with_api_sessions(monkeypatch):
         }
 
         class FakeResponse:
+            status_code = 200
+            text = ""
+
             def json(self):
                 return [{"id": 1, "name": "Alice"}]
     
         return FakeResponse()
     
-    monkeypatch.setattr("requests.get", fake_get)
+    monkeypatch.setattr("src.api.session.requests.get", fake_get)
 
     session = ApiSession(token="TEST_TOKEN")
     client = UsersClient(session=session)
