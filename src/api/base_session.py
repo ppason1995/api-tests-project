@@ -1,4 +1,12 @@
 import requests
+from .exceptions import (
+    ApiError,
+    BadRequestError,
+    UnauthorizedError,
+    ForbiddenError,
+    NotFoundError,
+    ServerError,
+)
 
 class BaseSession:
     """
@@ -30,4 +38,25 @@ class BaseSession:
         """Send DELETE request to given API endpoint."""
         return self.session.delete(
             self.base_url + endpoint)
+    
+    def _handle_response(self, response):
+        if 200 <= response.status_code < 300:
+            return response
+        
+        if response.status_code == 400:
+            raise BadRequestError(response.text)
+        
+        if response.status_code == 401:
+            raise UnauthorizedError(response.text)
+        
+        if response.status_code == 403:
+            raise ForbiddenError(response.text)
+        
+        if response.status_code == 404:
+            raise NotFoundError(response.text)
+        
+        if 500 <= response.status_code < 600:
+            raise ServerError(response.text)
+        
+        raise ApiError(f"Unexpected status code: {response.status_code}")
     
